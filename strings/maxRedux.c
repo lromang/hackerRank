@@ -8,9 +8,15 @@ void printString(char*);
 int main(){
   char*  string;
   size_t sSize = 101;
-  getline(&string, &sSize, stdin);
+  string = (char*)calloc(sSize, sizeof(char));
+  fgets(string, sSize, stdin);
+  // getline(&string, &sSize, stdin);
   string = compress(string, sSize);
-  printString(string);
+  if(string[1] != '\0'){
+    printString(string);
+  }else{
+    printf("Empty String");
+  }
 }
 
 char* rempRep(char* string, int index, int n){
@@ -40,8 +46,8 @@ char* compress(char* string, int n){
     reps = 0;
     prev = string[0];
     i    = 1;
-    if(string[0] == '\0'){
-      return "Empty String";
+    if(string == '\0'){
+      return '\0';
     }
     while(string[i] != '\0'){
       if(string[i] == prev){
