@@ -26,14 +26,6 @@ def checkDup(s):
             return True
     return False
 
-## Cause conflict
-def causeConf(s, c):
-    for i in range(len(s))[1:]:
-        if s[i] == s[i - 1] and s[i] == c:
-            return True
-    return False
-
-
 #### Get Pairs
 def getPairs(s):
     counts = dict()
@@ -52,8 +44,6 @@ def getPairs(s):
     return sorted(pairs.items(), key=operator.itemgetter(1), reverse = True)
 
 def maxAltern(s):
-    ## Remove recursively all consecutive chars.
-    s      = remReps(s)
     ## Get pairs
     pairs  = getPairs(s)
     ## Max length sofar
@@ -62,10 +52,7 @@ def maxAltern(s):
         s_aux = ''.join(char for char in s if char in pair[0])
         if not checkDup(s_aux):
             return pair[1]
-
-
-
-
+    return 0
 
 if __name__ == "__main__":
     line = sys.stdin.readline()
