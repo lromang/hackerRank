@@ -31,6 +31,11 @@ def getValue(genes, genesv, stran):
         value     = value + instances*gene[1]
     return value
 
+def minMax(genes, genesv, strans):
+    health = []
+    for stran in strans:
+        health.append(getValue(genes, genesv, stran))
+    return min(health), max(health)
 
 if __name__ == '__main__':
     ngenes = int(sys.stdin.readline())
@@ -40,4 +45,5 @@ if __name__ == '__main__':
     strans = []
     for i in range(nstran):
         strans.append([v.replace('\n', '') for v in sys.stdin.readline().split(' ')])
-        print(strans)
+    minVal, maxVal = minMax(genes, genesv, strans)
+    print(str(minVal) + ' ' + str(maxVal))
