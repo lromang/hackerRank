@@ -1,17 +1,41 @@
 #! /bin/python
 
 import sys
+from operator import itemgetter
+
+def getInstances(string1, string2):
+    if len(string1) > len(string2):
+        return 0
+    instances = 0
+    visited   = 0
+    while len(string1) + visited < len(string2):
+        for k in range(len(string1)):
+            if string1[k] != string2[k + visited]:
+                break
+        if k == (len(string1) - 1):
+            instances = instances + 1
+        visited = visited + 1
+    return instances
+
+
+def getValue(genes, genesv, stran):
+    start = int(stran[0])
+    end   = int(stran[1]) + 1
+    genesInt  = list(itemgetter(*range(end)[start:])(genes))
+    valuesInt = list(itemgetter(*range(end)[start:])(genesv))
+    value = 0
+    for gene in zip(genesInt, valuesInt):
+        instances = getInstances(gene[0], stran[2])
+        value     = value + instances*gene[1]
+    return value
+
 
 if __name__ == '__main__':
     ngenes = int(sys.stdin.readline())
-    print(ngenes)
     genes  = [v.replace('\n', '') for v in sys.stdin.readline().split(' ')]
-    print(genes)
     genesv = [ int(v) for v in sys.stdin.readline().split(' ')]
-    print(genesv)
     nstran = int(sys.stdin.readline())
-    print(nstran)
     strans = []
     for i in range(nstran):
-        strans.append(sys.stdin.readline().replace('\n', ''))
+        strans.append([v.replace('\n', '') for v in sys.stdin.readline().split(' ')])
         print(strans)
