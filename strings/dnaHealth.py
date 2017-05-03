@@ -8,11 +8,13 @@ def getInstances(string1, string2):
         return 0
     instances = 0
     visited   = 0
-    while len(string1) + visited < len(string2):
+    while len(string1) + visited <= len(string2):
+        match     = 1
         for k in range(len(string1)):
             if string1[k] != string2[k + visited]:
+                match = 0
                 break
-        if k == (len(string1) - 1):
+        if match:
             instances = instances + 1
         visited = visited + 1
     return instances
