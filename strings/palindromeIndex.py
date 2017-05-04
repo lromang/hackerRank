@@ -15,7 +15,7 @@ def toPalindrome(s):
             if s[(lens - 1) - (char + rmismatches + 1)] == s[char + lmismatches]:
                 index      = (lens - 1) - (char + rmismatches)
                 rightFault = 1
-            if (leftFault and rightFault) and (char + 1) < (lens / 2):
+            if leftFault and rightFault:
                 if s[(lens - 1) - (char + rmismatches + 2)] == s[char + lmismatches + 1]:
                     index      = (lens - 1) - (char + rmismatches)
                     rightFault = 1
