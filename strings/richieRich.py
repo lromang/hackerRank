@@ -26,7 +26,7 @@ def palNum(num, k):
         ## If we can change both digits.
         ## and neither of does is 9, make two replacments for 9
         if len(mismatch) > 0:
-            if (k - 2) >= len(mismatch) and \
+            if (k - 1) >= len(mismatch) and \
                (num[mismatch[0]] != 9 and num[len(num) - 1 - mismatch[0]] !=9):
                 num[mismatch[0]] = 9
                 num[len(num) - 1 - mismatch[0]] = 9
@@ -60,3 +60,8 @@ def palNum(num, k):
 if __name__ == '__main__':
     nk     = [int(v.replace('\n', '')) for v in sys.stdin.readline().split(' ')]
     number = [int(v) for v in list(sys.stdin.readline()) if v not in '\n']
+    res    = palNum(number, nk[1])
+    if res == -1:
+        print res
+    else:
+        print ''.join(str(v) for v in res)
