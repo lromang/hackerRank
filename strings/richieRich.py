@@ -29,18 +29,6 @@ def palNum(num, k):
         if len(mismatch) > 0:
             lindex = mismatch[0]
             rindex = len(num) - (1 + mismatch[0])
-            ## If we can change both digits.
-            ## and neither of thoes is 9, make two replacments for 9
-            ## k-1 because we are removing a mismatch
-            ##if ((k - 1) >= len(mismatch)) and (num[lindex] != 9 and num[rindex] != 9):
-            ##    num[lindex] = 9
-            ##    num[rindex] = 9
-            ##    mismatch.pop(0)
-            ##    k = k - 2
-            ##else:
-                ## If we only can make one change or
-                ## one of the digits is 9, make one replacement
-                ## for the largest possible number
             replace      = lindex if num[lindex] <= \
                            num[rindex] else rindex
             num[replace] = max(num[lindex], num[rindex])
