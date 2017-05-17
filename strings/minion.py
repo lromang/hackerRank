@@ -30,12 +30,11 @@ def minion_game(string):
     con_sufix_tot = sum(con_sufix_bag.values())
     ## Get vowels substrings
     if vow_sufix_tot > con_sufix_tot:
-        print 'Kevin ' + str(vow_sufix_tot)
+        print 'Kevin '  + str(vow_sufix_tot)
     elif con_sufix_tot > vow_sufix_tot:
         print 'Stuart ' + str(con_sufix_tot)
     else:
         print 'Draw'
-
 
 if __name__ == '__main__':
     string = raw_input()
